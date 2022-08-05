@@ -1,25 +1,33 @@
 import discord
 import TOKEN
 from discord.ext import commands
+from discord import Guild
 
-intents = discord.Intents.default()
-intents.members = True
-bot = commands.Bot(command_prefix='$')
+intents = discord.Intents.all()
+bot = commands.Bot(command_prefix='$', intents=intents)
 
 
 @bot.event
 async def on_ready():
-    print('We have logged in as {0.user}'.format(bot))
+    print('Logged in as {0.user}'.format(bot))
 
 
 @bot.command()
 async def ping(ctx):
-    await ctx.send(f"{round(bot.latency * 1000)}ms")
+    await ctx.send(f"`Latency: {round(bot.latency * 1000)}ms`")
 
+
+# guild = Guild()
 
 @bot.command()
 async def list(ctx):
-    await ctx.send(bot.users)
-
+    members = ctx.guild.members
+    memberList = ''
+    for member in members:
+        memberList += str(member) + "\n"
+    memberList = f"""```c
+--- MEMBERS --- 
+{memberList}```"""
+    await ctx.send(memberList)
 
 bot.run(TOKEN.TOKEN)
