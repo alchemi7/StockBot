@@ -1,11 +1,10 @@
 import discord
+import TOKEN
 from discord.ext import commands
 
 intents = discord.Intents.default()
 intents.members = True
 bot = commands.Bot(command_prefix='$')
-
-token = 'MTAwNDkyODA5MDA1NDYwMjc4NA.GB5tO4.jjzM12j0Z8KpZjNSfTq17mmZN3rX2HLZ2y66G0'
 
 
 @bot.event
@@ -23,4 +22,4 @@ async def list(ctx):
     await ctx.send(bot.users)
 
 
-bot.run(token)
+bot.run(TOKEN.TOKEN)
