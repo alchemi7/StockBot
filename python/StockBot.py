@@ -1,5 +1,5 @@
 import discord
-import TOKEN
+from TOKEN import TOKEN
 from pandas_datareader import data as pdr
 from discord.ext import commands
 from datetime import date
@@ -26,7 +26,7 @@ async def list(ctx):
     memberList = ''
     for member in members:
         memberList += str(member) + "\n"
-    memberList = f"""```c
+    memberList = f"""```python
 --- MEMBERS --- 
 {memberList}
 ```"""
@@ -53,4 +53,4 @@ async def quote(ctx, stock):
         await ctx.send("`Quote could not be found`")
 
 
-bot.run(TOKEN.TOKEN)
+bot.run(TOKEN)

@@ -1,4 +1,4 @@
-def quoteFilter(quote,stock,date):
+def quoteFilter(quote, stock, date):
     parts = quote.strip().split(' ')
     carryList = list(filter(''.__ne__, parts))
 
